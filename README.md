@@ -23,6 +23,7 @@ AI 会先读取目录，说明匹配的工具、运行要求和外部影响；�
 | muse-file-manager-monitor | 文件管理、系统监控、网页终端和 AI Agent | https://github.com/caichengle666/muse-file-manager-monitor |
 | muse-tunnel | Muse 沙盒中的 Cloudflare Tunnel、常驻和自动恢复 | https://github.com/caichengle666/muse-tunnel |
 | muse-cookies-sync | 自己的设备之间上传和恢复浏览器 Cookie | https://github.com/caichengle666/muse-cookies-sync |
+| muse-wecom-bridge | 企业微信智能机器人 × Muse 双向桥接，在企业微信里聊天、收发文件、卡片交互、主动推送 | https://github.com/caichengle666/muse-wecom-bridge |
 
 详细的选择条件、运行要求、外部影响和组合方式见 [`references/catalog.md`](references/catalog.md)。
 

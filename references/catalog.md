@@ -35,6 +35,17 @@
 - works with: 可用 `tunnel` 暴露自建接收端；与 `file-manager-monitor` 无直接依赖。
 - important boundary: 只处理用户自己的浏览器、账号和服务器。Cookie 属于登录凭据；恢复动作必须由用户主动触发，并且部分网站会因 IP、设备指纹或其他本地状态而拒绝复用。
 
+## wecom-bridge
+
+- repository: `https://github.com/caichengle666/muse-wecom-bridge`
+- skill: `muse-wecom-bridge`
+- choose when: 用户想在企业微信里直接跟 Muse 对话（含文本、语音、图片、文件、视频），或需要 Muse 主动推送消息/卡片到企业微信。
+- do not choose when: 用户想接管微信个人号（这是企业微信智能机器人方案，不是个人微信）；或只需要公网暴露服务、同步 Cookie。
+- requirements: Node.js 18+；企业微信管理后台创建智能机器人（API 模式 + 长连接）并获取 BotID/Secret；配置 `allowedUserIds` 白名单。
+- external effects: 本机向 `wss://openws.work.weixin.qq.com` 建长连接；收到的媒体文件下载到本地；同一 BotID 只允许一条连接。
+- works with: 可用 `tunnel` 给配套的 AI 后端提供公网地址；与 `file-manager-monitor` 无直接依赖。
+- important boundary: 白名单 fail-closed（为空拒绝启动）；`secrets.env` 绝不提交；外发文件仅限 `outgoing/` 与 `/tmp`；语音用企业微信自带转写。
+
 ## Combined Use
 
 - Cookie Sync + Tunnel：先部署 Cookie 接收端，再按需用 Tunnel 给它一个公网 HTTPS 地址；同步仍需用户主动触发。
