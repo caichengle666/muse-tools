@@ -46,6 +46,17 @@
 - works with: 可用 `tunnel` 给配套的 AI 后端提供公网地址；与 `file-manager-monitor` 无直接依赖。
 - important boundary: 白名单 fail-closed（为空拒绝启动）；`secrets.env` 绝不提交；外发文件仅限 `outgoing/` 与 `/tmp`；语音用企业微信自带转写。
 
+## feishu-bridge
+
+- repository: `https://github.com/caichengle666/muse-feishu-bridge`
+- skill: `muse-feishu-bridge`
+- choose when: 用户想在飞书里直接跟 Muse 对话（含文本、图片、文件、视频），或需要 Muse 主动推送消息/卡片到飞书；或需要在飞书群聊里 @ 机器人问答。
+- do not choose when: 用户想接管微信个人号或用企业微信（这是飞书企业自建应用方案）；或只需要公网暴露服务、同步 Cookie。
+- requirements: Node.js 18+；飞书开放平台创建企业自建应用（机器人能力 + 长连接接收事件，订阅 `im.message.receive_v1`）并获取 App ID/Secret；配置 `allowedOpenIds` 白名单。
+- external effects: 本机向飞书建 WebSocket 长连接收事件；收到的媒体文件下载到本地；同一应用只应有一条长连接。
+- works with: AI 后端由部署者自接 `inbox/`/`outbox/` 文件队列；与 `file-manager-monitor` 无直接依赖。
+- important boundary: 白名单 fail-closed（为空拒绝启动）；`secrets.env` 绝不提交；外发文件仅限 `outgoing/` 与 `/tmp`；群聊默认只响应 @；卡片原地更新需要应用开通"更新应用发送的消息"权限。
+
 ## Combined Use
 
 - Cookie Sync + Tunnel：先部署 Cookie 接收端，再按需用 Tunnel 给它一个公网 HTTPS 地址；同步仍需用户主动触发。
