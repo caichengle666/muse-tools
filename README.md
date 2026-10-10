@@ -25,6 +25,7 @@ AI 会先读取目录，说明匹配的工具、运行要求和外部影响；�
 | muse-cookies-sync | 自己的设备之间上传和恢复浏览器 Cookie | https://github.com/caichengle666/muse-cookies-sync |
 | muse-wecom-bridge | 企业微信智能机器人 × Muse 双向桥接，在企业微信里聊天、收发文件、卡片交互、主动推送 | https://github.com/caichengle666/muse-wecom-bridge |
 | muse-feishu-bridge | 飞书企业自建应用 × Muse 双向桥接，在飞书里聊天、收发文件、卡片回复、主动推送 | https://github.com/caichengle666/muse-feishu-bridge |
+| muse-auto-approve | muse.ai 外联审批全自动批准器，解放双手、自动永久放行审批域名 | https://github.com/caichengle666/muse-auto-approve |
 
 详细的选择条件、运行要求、外部影响和组合方式见 `references/catalog.md`。
 

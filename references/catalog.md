@@ -57,6 +57,17 @@
 - works with: AI 后端由部署者自接 `inbox/`/`outbox/` 文件队列；与 `file-manager-monitor` 无直接依赖。
 - important boundary: 白名单 fail-closed（为空拒绝启动）；`secrets.env` 绝不提交；外发文件仅限 `outgoing/` 与 `/tmp`；群聊默认只响应 @；卡片原地更新需要应用开通"更新应用发送的消息"权限。
 
+## auto-approve
+
+- repository: `https://github.com/caichengle666/muse-auto-approve`
+- skill: `muse-auto-approve`
+- choose when: 用户想让 muse.ai 里 Agent 的外联审批自动通过，不再手动点审批卡片；或希望新域名首次访问就自动永久放行。
+- do not choose when: 用户希望每次外联都经过人眼确认（那就别装这个）；或用的不是 muse.ai。
+- requirements: Node.js 20.18+；一个 muse.ai 账号（邮箱 + 密码）；出网能访问 muse.ai。
+- external effects: 自动登录 muse.ai（服务端会发一封 OTP 邮件，无需读码）；每 10 秒轮询审批并自动 `allow_always`；每 5 分钟续期会话；会在账号下落成 durable 永久放行规则。
+- works with: 与其他工具无直接依赖。
+- important boundary: 高权限工具——新域名的首次外联以后不再经人眼，只用在自己的账号和机器上；`data/`（凭据/会话）绝不提交；逆向协议，官方改版可能失效。
+
 ## Combined Use
 
 - Cookie Sync + Tunnel：先部署 Cookie 接收端，再按需用 Tunnel 给它一个公网 HTTPS 地址；同步仍需用户主动触发。
